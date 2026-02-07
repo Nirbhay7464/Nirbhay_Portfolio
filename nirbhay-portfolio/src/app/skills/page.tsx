@@ -8,19 +8,19 @@ const skillGroups = [
     title: "Frontend Engineering",
     icon: <Code2 className="w-5 h-5" />,
     desc: "Architecting immersive user interfaces with focus on performance, SEO, and accessibility.",
-    items: ["React", "Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Shadcn UI"],
+    items: ["React", "Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Shadcn UI" , "UI/UX Principles", "Responsive Design", "HTML/CSS","Javascript","Java AWT/GUI","UI Components","User Friendly Interface" ],
   },
   {
     title: "Backend & Systems",
     icon: <Server className="w-5 h-5" />,
     desc: "Building secure, scalable server-side logic and robust database architectures.",
-    items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Prisma ORM", "Redis"],
+    items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Prisma ORM", "Authentication", "JWT & OAuth", "Serverless Functions","REST API","Drizzle ORM", "NeonDB","MySQL","Clerk Auth",],
   },
   {
     title: "DevOps & Cloud",
     icon: <Globe className="w-5 h-5" />,
     desc: "Automating deployments and managing cloud infrastructure for high-availability apps.",
-    items: ["Docker", "AWS (S3/EC2)", "Vercel", "GitHub Actions", "REST & GraphQL", "CI/CD"],
+    items: ["Docker", "AWS (S3/EC2)", "Vercel", "GitHub Actions", "REST & GraphQL", "CI/CD", "Cloud Deployment", "Vercel Deployment", "Optimization", "SEO Basics"  ],
   },
 ];
 

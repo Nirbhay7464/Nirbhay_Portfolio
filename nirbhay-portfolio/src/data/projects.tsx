@@ -36,8 +36,8 @@ export const projects = [
     description:
       "A modern, minimal developer portfolio built with performance and accessibility in mind.",
     tech: ["Next.js", "Tailwind CSS"],
-    live: "https://example.com",
-    github: "https://github.com/yourname/portfolio",
+    live: "https://nirbhay-portfolio-24.vercel.app/",
+    github: "https://github.com/Nirbhay7464/Nirbhay_Portfolio",
   },
   
 ];

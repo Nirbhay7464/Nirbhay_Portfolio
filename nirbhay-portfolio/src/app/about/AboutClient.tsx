@@ -169,13 +169,13 @@ export default function AboutClient() {
             className="flex gap-16"
           >
             <div>
-              <p className="text-6xl font-black text-zinc-900 tracking-tighter">2+</p>
+              <p className="text-6xl font-black text-zinc-900 tracking-tighter">1+</p>
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-red-700">
                 Years Exp.
               </span>
             </div>
             <div>
-              <p className="text-6xl font-black text-zinc-900 tracking-tighter">20+</p>
+              <p className="text-6xl font-black text-zinc-900 tracking-tighter">10+</p>
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-red-700">
                 Projects
               </span>

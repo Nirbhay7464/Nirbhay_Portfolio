@@ -49,9 +49,9 @@ export default function ContactPage() {
               </p>
 
               <div className="grid grid-cols-1 gap-8">
-                <ContactLink icon={<Mail size={22} />} label="Professional Email" value="nirbhay@example.com" href="mailto:nirbhay@example.com" />
-                <ContactLink icon={<Linkedin size={22} />} label="LinkedIn" value="linkedin.com/in/nirbhay" href="#" />
-                <ContactLink icon={<MapPin size={22} />} label="Current Base" value="Mumbai, India" href="#" />
+                <ContactLink icon={<Mail size={22} />} label="Professional Email" value="nirbhayganorkar@gmail.com" href="mailto:nirbhayganorkar@gmail.com" />
+                <ContactLink icon={<Linkedin size={22} />} label="LinkedIn" value="linkedin.com/in/nirbhay" href="https://www.linkedin.com/in/nirbhay-ganorkar-5139a9312/" />
+                <ContactLink icon={<MapPin size={22} />} label="Current Base" value="Amravati, Maharashtra, India" href="#" />
               </div>
             </motion.div>
 
