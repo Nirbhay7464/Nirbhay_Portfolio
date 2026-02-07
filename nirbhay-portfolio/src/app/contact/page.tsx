@@ -7,11 +7,40 @@ import { Mail, Send, MapPin, Linkedin, CheckCircle2 } from "lucide-react";
 export default function ContactPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
-    setTimeout(() => setStatus("success"), 2000);
-    setTimeout(() => setStatus("idle"), 6000);
+
+    // 1. Capture the form reference immediately
+    const form = e.currentTarget; 
+    const formData = new FormData(form);
+    
+    // Use the variable we created in .env.local
+    formData.append("access_key", process.env.NEXT_PUBLIC_W3FORMS_KEY || ""); 
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // 2. Reset the form BEFORE changing the status/UI
+        form.reset(); 
+        setStatus("success");
+        setTimeout(() => setStatus("idle"), 6000);
+      } else {
+        setStatus("idle");
+        alert("Error: " + data.message);
+      }
+    } catch (error) {
+      console.error("Fetch Error:", error);
+      setStatus("idle");
+      // This was triggering because of the 'reset' crash
+      alert("Something went wrong. Please check the console.");
+    }
   };
 
   return (
@@ -62,11 +91,9 @@ export default function ContactPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              {/* Subtle Outer Card Glow */}
               <div className="absolute -inset-4 bg-red-600/5 blur-3xl opacity-0 transition-opacity duration-700 group-focus-within:opacity-100" />
               
               <div className="relative bg-zinc-900 border border-zinc-800/50 rounded-[2.5rem] p-8 md:p-12 overflow-hidden shadow-2xl">
-                {/* Visual Accent Gradient */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 blur-[100px] -z-10" />
                 
                 <AnimatePresence mode="wait">
@@ -75,6 +102,7 @@ export default function ContactPage() {
                       key="success"
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
                       className="py-20 text-center flex flex-col items-center"
                     >
                       <div className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center text-green-500 mb-6 border border-green-500/20">
@@ -91,17 +119,18 @@ export default function ContactPage() {
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-6">
-                        <InputField label="Name" placeholder="Nirbhay..." required />
-                        <InputField label="Email" type="email" placeholder="name@company.com" required />
+                        <InputField label="Name" name="name" placeholder="Nirbhay..." required />
+                        <InputField label="Email" name="email" type="email" placeholder="name@company.com" required />
                       </div>
 
-                      <InputField label="Subject" placeholder="How can I help?" />
+                      <InputField label="Subject" name="subject" placeholder="How can I help?" />
 
                       <div className="relative group/field">
                         <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 mb-3 group-focus-within/field:text-red-500 transition-colors duration-300">
                           Message
                         </label>
                         <textarea 
+                          name="message"
                           rows={4}
                           required
                           className="w-full bg-zinc-800/30 border border-zinc-800 rounded-2xl px-6 py-5 focus:outline-none focus:border-red-600/50 focus:bg-zinc-800/50 transition-all duration-500 text-white placeholder:text-zinc-700 resize-none font-light"
@@ -140,7 +169,7 @@ export default function ContactPage() {
   );
 }
 
-function InputField({ label, ...props }: any) {
+function InputField({ label, name, ...props }: any) {
   return (
     <div className="relative group/field flex flex-col">
       <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 mb-3 group-focus-within/field:text-red-500 transition-colors duration-300">
@@ -148,6 +177,7 @@ function InputField({ label, ...props }: any) {
       </label>
       <input 
         {...props}
+        name={name}
         className="w-full bg-zinc-800/30 border border-zinc-800 rounded-2xl px-6 py-4 focus:outline-none focus:border-red-600/50 focus:bg-zinc-800/50 transition-all duration-500 text-white placeholder:text-zinc-700 font-light"
       />
     </div>

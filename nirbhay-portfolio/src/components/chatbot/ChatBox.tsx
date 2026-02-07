@@ -60,7 +60,7 @@ export default function ChatBox() {
             <div className="p-6 space-y-4">
               <div className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Hi there! 👋 I'm <span className="font-bold text-gray-900">Nirbhay</span>. 
+                  Hi there! 👋 I'm <span className="font-bold text-gray-900">Nirbhay</span>.
                   How can I help you today?
                 </p>
               </div>
@@ -68,7 +68,7 @@ export default function ChatBox() {
               <div className="grid grid-cols-1 gap-3">
                 {/* WhatsApp Action */}
                 <a
-                  href="https://wa.me/917385295992"
+                  href={`https://wa.me/917385295992?text=${encodeURIComponent("Hi Nirbhay, I saw your portfolio and would like to connect!")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:border-red-200 hover:bg-red-50/50 transition-all group"
@@ -110,8 +110,8 @@ export default function ChatBox() {
 
       {/* Background Overlay (Optional: closes chat when clicking outside) */}
       {open && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/5 backdrop-blur-[2px] lg:hidden" 
+        <div
+          className="fixed inset-0 z-50 bg-black/5 backdrop-blur-[2px] lg:hidden"
           onClick={() => setOpen(false)}
         />
       )}
