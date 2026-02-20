@@ -20,7 +20,7 @@ export const projects = [
     description:
       "Developed a responsive photography portfolio website featuring dynamic galleries, optimized media performance, and a modern UI tailored to showcase professional visual content.”",
     tech: ["Next.js", "Tailwind CSS", "React", "Vercel","Framer Motion","React Icons","javascript","Sanity CMS,"],
-    live: "https://photography-website-82w2.vercel.app/",
+    live: "https://www.pratikrohankarphotography.com/",
     github: "https://github.com/Nirbhay7464/Photography_website",
   },
     {
